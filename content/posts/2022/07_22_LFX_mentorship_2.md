@@ -1,6 +1,6 @@
 +++
-title = "LFX mentorship and Mep"
-description = "Journey of working as LFX mentee."
+title = "LFX mentorship and Me"
+description = "Journey of working as LFX mentee"
 date: 2022-07-23T18:51:46+05:30
 type = ["posts","post"]
 tags = [

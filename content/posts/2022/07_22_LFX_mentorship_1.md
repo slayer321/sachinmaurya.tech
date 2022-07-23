@@ -1,6 +1,6 @@
 +++
 title = "Tale of getting selected for LFX mentorship"
-description = "Journey of getting selected as LFX mentee."
+description = "Journey of getting selected as LFX mentee"
 date: 2022-07-23T18:51:46+05:30
 type = ["posts","post"]
 tags = [
