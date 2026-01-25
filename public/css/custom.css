@@ -1,0 +1,13 @@
+/* Fix font size consistency between local and production */
+/* Ensures base font size is always 16px regardless of browser settings */
+html {
+  font-size: 16px;
+}
+
+/* Optional: If you want to make fonts slightly smaller, uncomment below */
+/*
+body {
+  font-size: 0.9375rem; /* 15px - slightly smaller */
+}
+*/
+
