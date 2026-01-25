@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>New Journey on Hi, I&#39;m Sachinmaurya!</title>
+    <link>http://localhost:1313/tags/new-journey/</link>
+    <description>Recent content in New Journey on Hi, I&#39;m Sachinmaurya!</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Jul 2022 15:51:12 +0530</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/new-journey/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A new Journey</title>
+      <link>http://localhost:1313/posts/2022/07/a-new-journey/</link>
+      <pubDate>Sun, 17 Jul 2022 15:51:12 +0530</pubDate>
+      <guid>http://localhost:1313/posts/2022/07/a-new-journey/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/yaHhBvE.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Namaste 🙏 , It’s been a while I have been thinking about creating a new website for me but procrastination was always been in my way. Finally, I’m here with the new website I always used to think of what does it feels like to have your portfolio and sharing your life experience with other people.&lt;/p&gt;&#xA;&lt;p&gt;I will post all the content that I’m learning let it be technical or non-technical and also will like to know your comment on it.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

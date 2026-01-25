@@ -6,8 +6,15 @@ theme = "hello-friend-ng"
 #PygmentsCodeFences = true
 PygmentsStyle = "monokai"
 
-paginate  = 10
 rssLimit  = 10  # Maximum number of items in the RSS feed.
+
+[pagination]
+  pagerSize = 12
+
+[services]
+  [services.googleAnalytics]
+    ID = "G-967282TL06"  # Replace with your actual Measurement ID
+
 copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License." # This message is only used by the RSS template.
 
 archetypeDir = "archetypes"
@@ -22,7 +29,7 @@ publishDir   = "public"
 #canonifyURLs = true
 
 enableRobotsTXT = true
-enableGitInfo   = false
+enableGitInfo   = true
 enableEmoji     = true
 enableMissingTranslationPlaceholders = false
 disableRSS     = false
@@ -33,18 +40,13 @@ disableHugoGeneratorInject = false
 [permalinks]
   posts = "/posts/:year/:month/:title/"
 
-[author]
-  name = "Sachin Maurya"
-
-[blackfriday]
-  hrefTargetBlank = true
-
 [taxonomies]
   tag      = "tags"
   category = "categories"
   series   = "series"
 
 [params]
+  author = "Sachin Maurya"
   
   dateform        = "Jan 2, 2006"
   dateformShort   = "Jan 2"
@@ -54,15 +56,19 @@ disableHugoGeneratorInject = false
   # Metadata mostly used in document's head
   # 
   description = "Sachin's blog and portfolio"
-  keywords = ""
+  keywords = "security, cybersecurity, open source, kubernetes, cloud security, devops, linux, golang, penetration testing, ethical hacking, blog, sachin maurya"
   images = [""]
+  themeColor = "#1b1c1d"
 
   # Home subtitle of the index page.
   title = "Hi, I'm Sachinmaurya!"
+  subtitle = "Security & Open Source"
   homeSubtitle = "Security and Open-source enthusiast "
 
   # Set a background for the homepage
-  # backgroundImage = "assets/images/background.jpg"
+  # Place your background image in static/assets/images/background.jpg
+  # Or use an external URL: backgroundImage = "https://example.com/bg.jpg"
+  backgroundImage = "assets/images/background.jpg"
 
   # Prefix of link to the git commit detail page. GitInfo must be enabled.
   #
@@ -109,8 +115,8 @@ disableHugoGeneratorInject = false
   #
   [params.footer]
     trademark = true
-    #rss = true
-    #copyright = true
+    rss = true
+    copyright = true
     author = true
 
     topText = []
@@ -133,7 +139,7 @@ disableHugoGeneratorInject = false
     # Set true to remove the logo cursor entirely.
     # logoCursorDisabled = false
     # Set to a valid CSS color to change the cursor in the logo.
-    # logoCursorColor    = "#67a2c9"
+    logoCursorColor    = "#00d9ff"
     # Set to a valid CSS time value to change the animation duration, "0s" to disable.
     # logoCursorAnimate  = "2s"
 

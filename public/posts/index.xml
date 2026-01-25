@@ -1,0 +1,239 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Hi, I&#39;m Sachinmaurya!</title>
+        <link>http://localhost:1313/posts/</link>
+        <description>Recent content in Posts on Hi, I&#39;m Sachinmaurya!</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate>
+        <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Golang defer cost me 100 bucks</title>
+            <link>http://localhost:1313/posts/2024/09/golang-defer-cost-me-100-bucks/</link>
+            <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+            
+            <guid>http://localhost:1313/posts/2024/09/golang-defer-cost-me-100-bucks/</guid>
+            <description>&lt;p&gt;&lt;a href=&#34;https://postimg.cc/bDf3hpF4&#34;&gt;&lt;img src=&#34;https://i.postimg.cc/G2HNvpP3/2.png&#34; alt=&#34;2.png&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Hi, It’s been a while since my last blog post, and during this time, I’ve contemplated sharing many insights and experiences. However, procrastination got the better of me, and those topics remained on the back burner. But today, I’m excited to dive into some technical insights I’ve learned the hard way&lt;/p&gt;
+&lt;p&gt;So I have been working with Go for quite a while now.  And recently I learned something interesting about Go that I wanted to share.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p><a href="https://postimg.cc/bDf3hpF4"><img src="https://i.postimg.cc/G2HNvpP3/2.png" alt="2.png"></a></p>
+<p>Hi, It’s been a while since my last blog post, and during this time, I’ve contemplated sharing many insights and experiences. However, procrastination got the better of me, and those topics remained on the back burner. But today, I’m excited to dive into some technical insights I’ve learned the hard way</p>
+<p>So I have been working with Go for quite a while now.  And recently I learned something interesting about Go that I wanted to share.</p>
+<h2 id="defer-in-go">Defer in Go</h2>
+<p>If you know about Go you already know what defer is in Go. Let’s get some basics clear, defer is something in Go that executes at the end of the function.
+Below is the simple Hello World program.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Go" data-lang="Go"><span style="display:flex;"><span><span style="color:#75715e">// Playground link : https://go.dev/play/p/PLLlz_4evLp </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">helloWorld</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Hello world&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Inside the main&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">helloWorld</span>()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;main exit&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Output of the program is</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Inside the main
+</span></span><span style="display:flex;"><span>main exit 
+</span></span><span style="display:flex;"><span>Hello world 
+</span></span></code></pre></div><p>Some of the common use cases of the defer it is used for Closing. It can be a file close or an HTTP call close.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-GO" data-lang="GO"><span style="display:flex;"><span><span style="color:#a6e22e">f</span> , <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Open</span>(<span style="color:#e6db74">&#34;test.txt&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span>{
+</span></span><span style="display:flex;"><span>	 <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatalf</span>(<span style="color:#e6db74">&#34;Not able to open the file %v\n&#34;</span>,<span style="color:#a6e22e">err</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">Close</span>()
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>.. 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>.
+</span></span></code></pre></div><p>Using multiple defer in a single function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Go" data-lang="Go"><span style="display:flex;"><span><span style="color:#75715e">// Playground link : https://go.dev/play/p/NeD_6xN2WgT</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;The count is&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This Prints  “The count is 3,2,1”. We will go into an explanation in some time. These are some of the ways we can use defer.</p>
+<p>:money_with_wings: Now comes a question that cost me 100 bucks. :money_with_wings:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Go" data-lang="Go"><span style="display:flex;"><span><span style="color:#75715e">// Playground link : https://go.dev/play/p/-ZWpgjraTxc</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">helloWorld</span>() <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Inside the hello World&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Exit from Hello World&#34;</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Inside main&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">helloWorld</span>()()
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Exit&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Before seeing the answer can you guess what the output will be?</p>
+<p>If you are naive like me you will say the below output.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Inside main
+</span></span><span style="display:flex;"><span>Exit
+</span></span><span style="display:flex;"><span>Inside the hello World
+</span></span><span style="display:flex;"><span>Exit from Hello World
+</span></span></code></pre></div><p>But the correct output is</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>Inside main
+</span></span><span style="display:flex;"><span>Inside the hello World
+</span></span><span style="display:flex;"><span>Exit
+</span></span><span style="display:flex;"><span>Exit from Hello World
+</span></span></code></pre></div><h2 id="now-lets-dig-deeper-into-how-defer-works-internally">Now let’s dig deeper into how defer works internally.</h2>
+<p>The above example that we saw was we were printing three ints using defer. Internally when the defer is registered it gets stored in the stack. Once the function returns the defer calls get executed in a LIFO(Last In First Out) manner just like stack.</p>
+<p><a href="https://postimg.cc/LhNwzgWX"><img src="https://i.postimg.cc/DyTh3qdq/defer-stack.png" alt="defer-stack.png"></a></p>
+<p>Now that you have a basic understanding of how defer works. Let’s dig deeper into the code which cost me 100 bucks. Inside the main we are deferring the helloworld function if you read the helloworld function carefully we can see the return types of the helloworld is function itself and when we are calling the helloworld function using defer we have two parenthesis where we are saying to call the return function as well. When the defer statement is evaluated it stores the return function of helloworld to stack and executes the helloworld function which causes the <strong>Inside the hello World</strong> to print then finally before the main function exits the defer statement is executed which prints the <strong>Exit from Hello World</strong> .</p>
+<h2 id="do-the-defer-statements-execute-after-the-return-or-before-the-return-of-the-function">Do the defer statements execute after the return or before the return of the function?</h2>
+<p>I had this query and after going through lots of blog posts I was just getting more and more confused. Some of them mentioned that defer is executed just before the return statement of the function and some mentioned after the return function</p>
+<p>Let’s refer to one of the examples from <a href="https://go.dev/blog/defer-panic-and-recover">Defer, Panic, and Recover</a> blog post at the start of the post there is a statement that got me confused.</p>
+<blockquote>
+<p>A defer statement pushes a function call onto a list. The list of saved calls is executed after the surrounding function returns.</p>
+</blockquote>
+<p>Here it mentions that the <strong>list of saved calls is executed after the surrounding function returns</strong> . In the third example of the blog post we see a function c() which is returning 1 for variable i and if we print it will give 2 which is expected as the defer function is executed after the return of the function c() and inside the defer execution we are incrementing the value of variable i.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Go" data-lang="Go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">c</span>() (<span style="color:#a6e22e">i</span> <span style="color:#66d9ef">int</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">defer</span> <span style="color:#66d9ef">func</span>() { <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span> }()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>(){
+</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">c</span>())
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now let’s consider the below example</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Go" data-lang="Go"><span style="display:flex;"><span><span style="color:#75715e">// Playground link : https://go.dev/play/p/999swx0tgNi\</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Tell</span>(<span style="color:#a6e22e">txt</span> <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">txt</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">hello</span>() <span style="color:#66d9ef">string</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">Tell</span>(<span style="color:#e6db74">&#34;inside method&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;inside&#34;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">hello</span>())
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">Tell</span>(<span style="color:#e6db74">&#34;outside&#34;</span>)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Here I was expecting the output to be</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>inside 
+</span></span><span style="display:flex;"><span>inside method
+</span></span><span style="display:flex;"><span>outside
+</span></span></code></pre></div><p>I was thinking of the hello return’s <strong>inside</strong> so it should be printed first and then the defer function print should have happened. But this is not what we get when we run the program.
+I stumbled upon this defer statement spec (<a href="https://go.dev/ref/spec#Defer_statements">https://go.dev/ref/spec#Defer_statements</a>) and after reading it twice it started making sense. If you read this line carefully</p>
+<blockquote>
+<p>That is, if the surrounding function returns through an explicit return statement, deferred functions are executed after any result parameters are set by that return statement but before the function returns to its caller.</p>
+</blockquote>
+<p>It mentions that defer functions are executed after any result parameters are set by that return statement but before the function returns to its caller. The last 8 words where it all started making sense to me.</p>
+<p>So we can conclude that defer functions are executed after the return statement of the executing function but before the returns to its caller that was the reason in the above example the first print was <strong>inside method</strong> and not <strong>inside</strong> because here before return to the caller it also executed the defer statement which printed the  <strong>inside method</strong>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>You must be still thinking was this some production bug that cost me 100 bucks? No, it wasn’t we had a small quiz kind of thing organised by one of the leads at my workspace where we have this exercise about Golang defer whoever loses has to pay 100 bucks and if you win you get 100 bucks. You can guess from the title I lost. But it sparks the curiosity in me to learn how exactly defer works internally and learn about all the gotchas.</p>
+<p>I learned a lot’s of things about defer during this whole process.I hope you found this blog helpfull. If you have any queries or concerns do reach out to me on my socials.</p>
+<h2 id="reference">Reference</h2>
+<p><a href="https://go.dev/blog/defer-panic-and-recover">https://go.dev/blog/defer-panic-and-recover</a></p>
+<p><a href="https://blog.learngoprogramming.com/gotchas-of-defer-in-go-1-8d070894cb01">https://blog.learngoprogramming.com/gotchas-of-defer-in-go-1-8d070894cb01</a> (I highly recommend reading 3 part series on defer Gotchas by Inanc Gumus)</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Attending My First KubeCon</title>
+            <link>http://localhost:1313/posts/2023/09/attending-my-first-kubecon/</link>
+            <pubDate>Sun, 03 Sep 2023 00:00:00 +0000</pubDate>
+            
+            <guid>http://localhost:1313/posts/2023/09/attending-my-first-kubecon/</guid>
+            <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/vF4L3Pc.jpg&#34; alt=&#34;Amsterdam&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Well, it’s been 4 Months since I came back from KubeCon EU 2023 and this blog post has been on my TODO list since then but the more I thought of writing about it there were some more priority things to do and I had to deprioritize this Blog post. But now after spending some weekends on it, I have just pinned down the experience I had attending my first KubeCon.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p><img src="https://i.imgur.com/vF4L3Pc.jpg" alt="Amsterdam"></p>
+<p>Well, it’s been 4 Months since I came back from KubeCon EU 2023 and this blog post has been on my TODO list since then but the more I thought of writing about it there were some more priority things to do and I had to deprioritize this Blog post. But now after spending some weekends on it, I have just pinned down the experience I had attending my first KubeCon.</p>
+<p>I think this blog post will be a letter to me that will remind me of the things that I might forget in the long run.</p>
+<h2 id="overview">Overview</h2>
+<p>As the title says this blog post will be my experience of attending my first KubeCon and maybe will be my thought of going on my first international flight or should I say my life’s first flight. Yes, it’s true this was my first time sitting on the flight.</p>
+<p>Just a heads-up through this blog post you will not find me attending many talks as my motivation was to interact with as many people as possible.</p>
+<h4 id="first-day">First Day</h4>
+<p><strong>18 April:</strong> The first day of the KubeCon was <a href="https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/about/">co-localted and sponsored co-located events.</a> As this was the first time CiliumCon was happening I was very excited to attend that event.</p>
+<p>I attended the talk <a href="https://www.youtube.com/watch?v=FucmPqU_pvw">The Cilium Story - Why We Created Cilium - Thomas Graf</a> .It&rsquo;s been a while since I have been following the Cilium project and Thomas as well I had already watched some of his old videos talking about cilium but attending it in person was a different kind of experience from me.His talk was mostly about Cilium and other projects that he and his company built like Hubble, Tetragon etc. and I like his Slide specifically where he mentioned eBPF superpower and showed eleven from Stranger Things.
+After this talk, I wanted to attend sponsor co-located events the main confusion was which one should I go to because there were lots of them happening at the same time.</p>
+<p>As the event took place in a different venue this was a good opportunity for us to explore the beautiful city as well. We decided to go for the Azure Day Hosted by Microsoft which was quite a distance from the main venue but we went there anyway and we good chance to interact with some folks where we discussed DevOps, interviews and how living and working from Amsterdam feels like because the folks with whom we interacting with one of them was India and she shared how she is living in Amsterdam from last 2 years and what it feels like.</p>
+<h4 id="second-day-and-third-day">Second Day and Third Day</h4>
+<p><strong>19,20 April:</strong> Officially the event started and it was sad that I was a bit late and due to which I didn’t get the opportunity to sit in the main Hall where the Keynote was happening(and the reason was it was already full) and we where ask to sit in a different room where the live stream was played.</p>
+<p>Once the keynote finished all the booths were open and the swag hunt started. 🫣</p>
+<p>My main plan for the next 2 days was to go to most of the booths interact with them and learn about the different projects. At first, I was a bit overwhelmed as there were a lot of them. The whole day was spent interacting with lots of people and learning about different projects.</p>
+<p>Some of the projects that I liked the most</p>
+<ol>
+<li><a href="https://akuity.io/">Akuity</a> : As I already have some experience working with Argocd. This was something that caught my interest and the people behind the company was the creator of Argocd Itself. It was Cool to see how they were offering some of the awesome features on top of Argocd.</li>
+<li><a href="https://isovalent.com">Isovalent</a> : Well I think I should say this(If you ask me was there any booth where you spend the most of your time . It will surely be Isovalent). Here I got an opportunity to <a href="https://twitter.com/0x_Mantis/status/1649404555455610880?t=d9fZGqprDZO6YR36UTP5Zg&amp;s=19">meet Liz rice</a>. It was a fanboy moment for me and well I was also able to get the signed copy of the ebpf book from Lize Rice after spending hours in the queue but it was worth it.</li>
+<li><a href="https://cerbos.dev/">Cerbos</a>: Though I didn’t get an opportunity to take a deeper look at their product after the brief overview it seems that Cerbos helps users separate their authorization process from their core application code.</li>
+<li><a href="https://www.groundcover.com/">Groundcover</a>: This is the project that is used to monitor your whole k8s cluster what I liked most about it is they were using <a href="https://www.groundcover.com/blog/what-is-ebpf">eBPF Instrumentation</a>. And they offer a Cool dashboard for that.</li>
+</ol>
+<h4 id="fourth-day">Fourth Day</h4>
+<p><strong>21 April:</strong> I was the Scholarship recipient to attend this conference. They also organized a Mentoring session where we got a chance to interact with Industry leaders from some Big Companies. The best part about this session was how it was organized it was for 60 min and they divided the time into 3 sections for 20 min each where we could go on different tables based on our preference to discuss about the things we wanted like career, technical, community, anything.</p>
+<p>Here when I want to the technical table there I got and the opportunity to interact with people from different countries sharing their life experience the fun part was here we didn’t swap our tables as we spent 40 minutes talking about different technology, freelancing, community, managers and whatnot. And I think this was best spend 60 min for me.After that I attended my last talk of the Day i.e. <a href="https://youtu.be/fJiuqRY5Oi4?feature=shared">Keeping It Simple: Cilium Networking for Multicloud Kubernetes - Liz Rice</a></p>
+<p>Can you spot me? 😄
+<img src="https://i.imgur.com/6UnFdwo.jpg" alt="Mentoring Discussion"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>For me attending this event was a whole different experience in many terms as travelling to a whole new country, meeting people from different walks of life, talking with them and getting a different view on how things are and from me It has just started.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>LFX mentorship and Me</title>
+            <link>http://localhost:1313/posts/2022/07/lfx-mentorship-and-me/</link>
+            <pubDate>Sat, 23 Jul 2022 18:51:46 +0530</pubDate>
+            
+            <guid>http://localhost:1313/posts/2022/07/lfx-mentorship-and-me/</guid>
+            <description>&lt;p&gt;This Blog has been already Published on Medium,you can read more about it &lt;a href=&#34;https://medium.com/@sach1n/lfx-mentorship-and-me-5bda26594f63&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>This Blog has been already Published on Medium,you can read more about it <a href="https://medium.com/@sach1n/lfx-mentorship-and-me-5bda26594f63">here</a>.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Tale of getting selected for LFX mentorship</title>
+            <link>http://localhost:1313/posts/2022/07/tale-of-getting-selected-for-lfx-mentorship/</link>
+            <pubDate>Sat, 23 Jul 2022 18:51:46 +0530</pubDate>
+            
+            <guid>http://localhost:1313/posts/2022/07/tale-of-getting-selected-for-lfx-mentorship/</guid>
+            <description>&lt;p&gt;This Blog has been already Published on Medium,you can read more about it &lt;a href=&#34;https://medium.com/@sach1n/tale-of-getting-selected-for-lfx-mentorship-bf92fc1a1064&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>This Blog has been already Published on Medium,you can read more about it <a href="https://medium.com/@sach1n/tale-of-getting-selected-for-lfx-mentorship-bf92fc1a1064">here</a>.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>A new Journey</title>
+            <link>http://localhost:1313/posts/2022/07/a-new-journey/</link>
+            <pubDate>Sun, 17 Jul 2022 15:51:12 +0530</pubDate>
+            
+            <guid>http://localhost:1313/posts/2022/07/a-new-journey/</guid>
+            <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/yaHhBvE.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Namaste 🙏 , It’s been a while I have been thinking about creating a new website for me but procrastination was always been in my way. Finally, I’m here with the new website I always used to think of what does it feels like to have your portfolio and sharing your life experience with other people.&lt;/p&gt;
+&lt;p&gt;I will post all the content that I’m learning let it be technical or non-technical and also will like to know your comment on it.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p><img src="https://i.imgur.com/yaHhBvE.jpg" alt=""></p>
+<p>Namaste 🙏 , It’s been a while I have been thinking about creating a new website for me but procrastination was always been in my way. Finally, I’m here with the new website I always used to think of what does it feels like to have your portfolio and sharing your life experience with other people.</p>
+<p>I will post all the content that I’m learning let it be technical or non-technical and also will like to know your comment on it.</p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

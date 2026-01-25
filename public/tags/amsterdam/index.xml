@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Amsterdam on Hi, I&#39;m Sachinmaurya!</title>
+    <link>http://localhost:1313/tags/amsterdam/</link>
+    <description>Recent content in Amsterdam on Hi, I&#39;m Sachinmaurya!</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/amsterdam/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Attending My First KubeCon</title>
+      <link>http://localhost:1313/posts/2023/09/attending-my-first-kubecon/</link>
+      <pubDate>Sun, 03 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2023/09/attending-my-first-kubecon/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/vF4L3Pc.jpg&#34; alt=&#34;Amsterdam&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Well, it’s been 4 Months since I came back from KubeCon EU 2023 and this blog post has been on my TODO list since then but the more I thought of writing about it there were some more priority things to do and I had to deprioritize this Blog post. But now after spending some weekends on it, I have just pinned down the experience I had attending my first KubeCon.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
