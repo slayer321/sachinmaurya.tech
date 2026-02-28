@@ -1,5 +1,5 @@
 +++
-title = "Website Uprgade Using Cursor"
+title = "Website Upgrade Using Cursor"
 date = 2026-02-28T14:58:33+05:30
 type = ["notes","note"]
 tags = []

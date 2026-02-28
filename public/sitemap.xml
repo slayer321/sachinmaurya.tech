@@ -8,7 +8,7 @@
     <loc>http://localhost:1313/</loc>
     <lastmod>2026-02-28T14:58:33+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/notes/2026/website-uprgade-using-cursor/</loc>
+    <loc>http://localhost:1313/notes/2026/website-upgrade-using-cursor/</loc>
     <lastmod>2026-02-28T14:58:33+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/lifestyle/</loc>
@@ -40,24 +40,6 @@
   </url><url>
     <loc>http://localhost:1313/posts/2024/09/golang-defer-cost-me-100-bucks/</loc>
     <lastmod>2024-09-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/cronjob/</loc>
-    <lastmod>2024-02-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/kubernetes/</loc>
-    <lastmod>2024-02-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/notes/2024/k8s-cronjob-timezone/</loc>
-    <lastmod>2024-02-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/til/</loc>
-    <lastmod>2024-02-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/concurrency/</loc>
-    <lastmod>2024-01-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/notes/2024/go-context-patterns/</loc>
-    <lastmod>2024-01-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/amsterdam/</loc>
     <lastmod>2023-09-03T00:00:00+00:00</lastmod>

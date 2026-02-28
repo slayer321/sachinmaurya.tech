@@ -9,10 +9,10 @@
     <lastBuildDate>Sat, 28 Feb 2026 14:58:33 +0530</lastBuildDate>
     <atom:link href="http://localhost:1313/notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Website Uprgade Using Cursor</title>
-      <link>http://localhost:1313/notes/2026/website-uprgade-using-cursor/</link>
+      <title>Website Upgrade Using Cursor</title>
+      <link>http://localhost:1313/notes/2026/website-upgrade-using-cursor/</link>
       <pubDate>Sat, 28 Feb 2026 14:58:33 +0530</pubDate>
-      <guid>http://localhost:1313/notes/2026/website-uprgade-using-cursor/</guid>
+      <guid>http://localhost:1313/notes/2026/website-upgrade-using-cursor/</guid>
       <description>&lt;p&gt;Maybe after reading the title, you stumbled upon this notes section that I added today.&lt;/p&gt;&#xA;&lt;p&gt;Since I pushed the website live back in 2022, just after completing college, my goal was to share the things I learn, and in the process, I might understand them better.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;The ultimate test of knowledge is to convey it to another — Richard Feynman&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;But after almost three years, I believe it didn’t happen the way I thought. Now I think I have a better hold on things, and I will &lt;del&gt;try&lt;/del&gt; do whatever brings the best out of me every day. I use Cursor at my work, and it’s really helpful in many ways. For quite a while, I was thinking of using it to upgrade the current website that I have, where the hello-friend-ng Hugo template is used. For now, I think it looks good to me, as I wanted it to be minimal.&lt;/p&gt;</description>
     </item>
   </channel>

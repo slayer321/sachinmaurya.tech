@@ -51,31 +51,31 @@
       <description></description>
     </item>
     <item>
-      <title>CronJob</title>
-      <link>http://localhost:1313/tags/cronjob/</link>
-      <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/cronjob/</guid>
+      <title>Amsterdam</title>
+      <link>http://localhost:1313/tags/amsterdam/</link>
+      <pubDate>Sun, 03 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/amsterdam/</guid>
       <description></description>
     </item>
     <item>
-      <title>Kubernetes</title>
-      <link>http://localhost:1313/tags/kubernetes/</link>
-      <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/kubernetes/</guid>
+      <title>KubeCon EU 2023</title>
+      <link>http://localhost:1313/tags/kubecon-eu-2023/</link>
+      <pubDate>Sun, 03 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/kubecon-eu-2023/</guid>
       <description></description>
     </item>
     <item>
-      <title>TIL</title>
-      <link>http://localhost:1313/tags/til/</link>
-      <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/til/</guid>
+      <title>LFX Mentorship</title>
+      <link>http://localhost:1313/tags/lfx-mentorship/</link>
+      <pubDate>Sun, 03 Sep 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/lfx-mentorship/</guid>
       <description></description>
     </item>
     <item>
-      <title>Concurrency</title>
-      <link>http://localhost:1313/tags/concurrency/</link>
-      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/concurrency/</guid>
+      <title>K8s</title>
+      <link>http://localhost:1313/tags/k8s/</link>
+      <pubDate>Sat, 23 Jul 2022 18:51:46 +0530</pubDate>
+      <guid>http://localhost:1313/tags/k8s/</guid>
       <description></description>
     </item>
   </channel>
