@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lifestyle on Hi, I&#39;m Sachinmaurya!</title>
-    <link>http://localhost:37083/tags/lifestyle/</link>
-    <description>Recent content in Lifestyle on Hi, I&#39;m Sachinmaurya!</description>
+    <title>Lifestyle on Sachin Maurya&#39;s Weblog</title>
+    <link>http://localhost:1313/tags/lifestyle/</link>
+    <description>Recent content in Lifestyle on Sachin Maurya&#39;s Weblog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:37083/tags/lifestyle/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/lifestyle/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Social media</title>
-      <link>http://localhost:37083/posts/1/01/social-media/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:37083/posts/1/01/social-media/</guid>
-      <description>&lt;p&gt;It’s been around a month now since I uninstalled all the social media apps from my phone.&lt;/p&gt;&#xA;&lt;p&gt;Instagram, Reddit, and X (Twitter) that I used to use heavily I just deleted those apps.&lt;/p&gt;&#xA;&lt;p&gt;So I think this topic or experiment is not something new over the Internet. I myself have read lots of blog posts and reports on this topic, but for me, I wanted to experiment myself and see what difference it really makes.&lt;/p&gt;</description>
+      <title>Social Media diet for 30 days</title>
+      <link>http://localhost:1313/posts/2026/01/social-media-diet-for-30-days/</link>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2026/01/social-media-diet-for-30-days/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://postimg.cc/ZCXbjN2p&#34;&gt;&lt;img src=&#34;https://i.postimg.cc/DwwSvdcj/brainrot.jpg&#34; alt=&#34;brainrot.jpg&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;It’s been around a month now since I uninstalled all the social media apps from my phone.&lt;/p&gt;&#xA;&lt;p&gt;Instagram, Reddit, and X (Twitter) that I used to use heavily I just deleted those apps.&lt;/p&gt;&#xA;&lt;p&gt;So I think this topic or experiment is not something new over the Internet. I myself have read lots of blog posts and reports on this topic, but for me, I wanted to experiment myself and see what difference it really makes.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

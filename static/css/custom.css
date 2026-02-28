@@ -1,13 +1,567 @@
-/* Fix font size consistency between local and production */
-/* Ensures base font size is always 16px regardless of browser settings */
 html {
   font-size: 16px;
+  background-color: #f7f5f0;
 }
 
-/* Optional: If you want to make fonts slightly smaller, uncomment below */
-/*
+/* ===== Background + header + menu: all same warm off-white ===== */
 body {
-  font-size: 0.9375rem; /* 15px - slightly smaller */
+  background-color: #f7f5f0;
 }
-*/
 
+.header,
+.menu,
+.submenu {
+  background: #f7f5f0;
+}
+
+/* light mode (explicit media query to override the theme's own light override) */
+@media (prefers-color-scheme: light) {
+  html, body { background-color: #f7f5f0; }
+  .header,
+  .menu,
+  .submenu { background: #f7f5f0; }
+}
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+  html, body { background-color: #1a1b1e; }
+  .header,
+  .menu,
+  .submenu { background: #1a1b1e; }
+}
+
+/* data-theme toggle overrides */
+[data-theme=light] html,
+[data-theme=light] body { background-color: #f7f5f0; }
+[data-theme=light] .header,
+[data-theme=light] .menu,
+[data-theme=light] .submenu { background-color: #f7f5f0; }
+
+[data-theme=dark] html,
+[data-theme=dark] body { background-color: #1a1b1e; }
+[data-theme=dark] .header,
+[data-theme=dark] .menu,
+[data-theme=dark] .submenu { background: #1a1b1e; }
+
+/* ===== Navbar: tighter ===== */
+.header {
+  padding: 14px 20px;
+}
+
+.header__inner {
+  width: 580px;
+}
+
+/* ===== Global content alignment (non-home pages) ===== */
+.post,
+.posts {
+  max-width: 630px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+/* ===== Theme toggle: sun/moon emoji ===== */
+.theme-toggler {
+  display: none;
+}
+
+.theme-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.theme-icon--dark { display: none; }
+.theme-icon--light { display: inline; }
+
+[data-theme=dark] .theme-icon--dark { display: inline; }
+[data-theme=dark] .theme-icon--light { display: none; }
+
+/* ===== Post/Note date below title ===== */
+.post-date {
+  color: #777;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-date::after {
+  content: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .post-date { color: #999; }
+}
+
+[data-theme=dark] .post-date { color: #999; }
+
+/* ===== Homepage ===== */
+
+.home-main {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- Hero --- */
+.home-hero {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
+}
+
+.home-avatar {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme=dark] .home-avatar {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  .home-avatar {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+.home-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-hero h1 {
+  font-size: 1.6rem;
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+.home-tagline {
+  font-size: 0.95rem;
+  opacity: 0.65;
+  margin: 0 0 0.75rem;
+  line-height: 1.5;
+}
+
+.home-social {
+  margin-top: 0.5rem;
+}
+
+/* --- Action buttons --- */
+.home-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.home-action-btn {
+  padding: 0.4rem 1.1rem;
+  border: 1.5px solid var(--accent);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.home-action-btn:hover {
+  background: var(--accent);
+  color: var(--background);
+}
+
+.home-action-btn.primary {
+  background: var(--accent);
+  color: var(--background);
+}
+
+.home-action-btn.primary:hover {
+  opacity: 0.85;
+}
+
+/* --- Sections --- */
+.home-section {
+  margin: 2.5rem 0;
+}
+
+.home-section h2 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  opacity: 0.5;
+  font-weight: 600;
+}
+
+[data-theme=dark] .home-section h2 {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+/* --- Post / Note list (shared) --- */
+.home-posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.home-post-item {
+  padding: 0.6rem 0;
+}
+
+.home-post-item + .home-post-item {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme=dark] .home-post-item + .home-post-item {
+  border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+.home-post-item a {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+
+.home-post-title {
+  font-size: 0.95rem;
+  font-weight: 450;
+  color: var(--accent);
+}
+
+.home-post-item a:hover .home-post-title {
+  text-decoration: underline;
+}
+
+.home-post-date {
+  font-size: 0.78rem;
+  opacity: 0.4;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-view-all {
+  margin-top: 0.75rem;
+}
+
+.home-view-all a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.82rem;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+
+.home-view-all a:hover {
+  opacity: 1;
+}
+
+/* --- Now section --- */
+.home-now {
+  padding: 1.25rem;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.015);
+}
+
+[data-theme=dark] .home-now {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.home-now h2 {
+  border-bottom: none;
+  margin-bottom: 0.5rem;
+}
+
+.now-content p {
+  margin: 0.4rem 0;
+  line-height: 1.55;
+  font-size: 0.9rem;
+}
+
+.now-content a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.now-content a:hover {
+  opacity: 0.7;
+}
+
+/* --- Subscribe box --- */
+.subscribe-box {
+  padding: 1.25rem;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+[data-theme=dark] .subscribe-box {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.subscribe-box h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+}
+
+.subscribe-box p {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+.subscribe-links {
+  display: flex;
+  justify-content: center;
+}
+
+.subscribe-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 1rem;
+  border: 1.5px solid var(--accent);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.subscribe-btn:hover {
+  background: var(--accent);
+  color: var(--background);
+}
+
+.subscribe-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ===== Reading Experience ===== */
+
+.post-content {
+  max-width: 720px;
+  line-height: 1.75;
+  font-size: 1.05rem;
+}
+
+.post-content p {
+  margin: 1.25rem 0;
+}
+
+.post-content h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.post-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.post-content h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.post-content ul,
+.post-content ol {
+  margin: 1.25rem 0;
+  padding-left: 1.75rem;
+}
+
+.post-content li {
+  margin: 0.4rem 0;
+  line-height: 1.6;
+}
+
+.post-content code {
+  padding: 0.15rem 0.35rem;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 3px;
+  font-size: 0.88em;
+}
+
+[data-theme=dark] .post-content code {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.post-content pre {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+.post-content pre code {
+  padding: 0;
+  background: none;
+  font-size: 0.88rem;
+}
+
+.post-content blockquote {
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+}
+
+/* Table of Contents */
+.toc-sidebar {
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  margin: 1.5rem 0;
+}
+
+[data-theme=dark] .toc-sidebar {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.toc-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#toc ul {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0.25rem 0;
+}
+
+#toc li {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+
+#toc a {
+  color: var(--accent);
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+#toc a:hover {
+  opacity: 1;
+}
+
+/* Related posts */
+.related-posts {
+  margin: 2rem 0;
+  padding: 1.25rem;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme=dark] .related-posts {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.related-posts h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.related-posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.related-post-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme=dark] .related-post-item {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.related-post-item:last-child {
+  border-bottom: none;
+}
+
+.related-post-item a {
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.related-post-title {
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.related-post-date {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  white-space: nowrap;
+}
+
+/* Tag pills (used in notes/post lists) */
+.tag-pill {
+  padding: 0.1rem 0.4rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  font-size: 0.7rem;
+}
+
+[data-theme=dark] .tag-pill {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 684px) {
+  .home-main {
+    padding: 0 16px;
+  }
+
+  .home-hero h1 {
+    font-size: 1.35rem;
+  }
+
+  .home-tagline {
+    font-size: 0.88rem;
+  }
+
+  .home-action-btn {
+    padding: 0.35rem 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .home-post-item a {
+    gap: 0.75rem;
+  }
+
+  .home-post-title {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,68 @@
+{{ define "body" }}
+    <body class="{{ if .Site.Params.backgroundImage }} background-image" style="background-image: url('{{ .Site.Params.backgroundImage }}');" {{ else }}"{{ end }}>
+{{ end }}
+
+{{ define "main" }}
+    <main aria-role="main" class="home-main">
+        <div class="home-hero">
+            {{ if .Site.Params.Portrait.Path }}
+            <div class="home-avatar">
+               <img src="{{ .Site.Params.Portrait.Path }}" alt="{{ .Site.Params.Portrait.Alt }}" />
+            </div>
+            {{ end }}
+
+            <h1>Sachin Maurya</h1>
+            <p class="home-tagline">Backend engineer. Writing about Go, K8s &amp; cloud security.</p>
+
+            {{- with .Site.Params.social }}
+                <div class="home-social">
+                    {{ partial "social-icons.html" . }}
+                </div>
+            {{- end }}
+        </div>
+
+        {{ $recentPosts := (where .Site.RegularPages "Type" "posts") }}
+        {{ if $recentPosts }}
+        <div class="home-section">
+            <h2>Latest Writing</h2>
+            <ul class="home-posts-list">
+                {{ range first 5 $recentPosts }}
+                <li class="home-post-item">
+                    <a href="{{ .RelPermalink }}">
+                        <span class="home-post-title">{{ .Title }}</span>
+                        <span class="home-post-date">{{ .Date.Format "Jan 2006" }}</span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+            <div class="home-view-all">
+                <a href="/posts/">All posts &rarr;</a>
+            </div>
+        </div>
+        {{ end }}
+
+        {{ $recentNotes := (where .Site.RegularPages "Type" "notes") }}
+        {{ if $recentNotes }}
+        <div class="home-section">
+            <h2>Recent Notes</h2>
+            <ul class="home-posts-list">
+                {{ range first 3 $recentNotes }}
+                <li class="home-post-item">
+                    <a href="{{ .RelPermalink }}">
+                        <span class="home-post-title">{{ .Title }}</span>
+                        <span class="home-post-date">{{ .Date.Format "Jan 2006" }}</span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+            <div class="home-view-all">
+                <a href="/notes/">All notes &rarr;</a>
+            </div>
+        </div>
+        {{ end }}
+
+        <div class="home-section">
+            {{ partial "subscribe-box.html" . }}
+        </div>
+    </main>
+{{ end }}

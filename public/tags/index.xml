@@ -1,81 +1,81 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Hi, I&#39;m Sachinmaurya!</title>
-    <link>http://localhost:37083/tags/</link>
-    <description>Recent content in Tags on Hi, I&#39;m Sachinmaurya!</description>
+    <title>Tags on Sachin Maurya&#39;s Weblog</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on Sachin Maurya&#39;s Weblog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:37083/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lifestyle</title>
+      <link>http://localhost:1313/tags/lifestyle/</link>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/lifestyle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Productivity</title>
+      <link>http://localhost:1313/tags/productivity/</link>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/productivity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Social-Media</title>
+      <link>http://localhost:1313/tags/social-media/</link>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/social-media/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Defer</title>
-      <link>http://localhost:37083/tags/defer/</link>
+      <link>http://localhost:1313/tags/defer/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:37083/tags/defer/</guid>
+      <guid>http://localhost:1313/tags/defer/</guid>
       <description></description>
     </item>
     <item>
       <title>Go</title>
-      <link>http://localhost:37083/tags/go/</link>
+      <link>http://localhost:1313/tags/go/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:37083/tags/go/</guid>
+      <guid>http://localhost:1313/tags/go/</guid>
       <description></description>
     </item>
     <item>
       <title>Golang</title>
-      <link>http://localhost:37083/tags/golang/</link>
+      <link>http://localhost:1313/tags/golang/</link>
       <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:37083/tags/golang/</guid>
+      <guid>http://localhost:1313/tags/golang/</guid>
       <description></description>
     </item>
     <item>
-      <title>Amsterdam</title>
-      <link>http://localhost:37083/tags/amsterdam/</link>
-      <pubDate>Sun, 03 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:37083/tags/amsterdam/</guid>
+      <title>CronJob</title>
+      <link>http://localhost:1313/tags/cronjob/</link>
+      <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/cronjob/</guid>
       <description></description>
     </item>
     <item>
-      <title>KubeCon EU 2023</title>
-      <link>http://localhost:37083/tags/kubecon-eu-2023/</link>
-      <pubDate>Sun, 03 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:37083/tags/kubecon-eu-2023/</guid>
+      <title>Kubernetes</title>
+      <link>http://localhost:1313/tags/kubernetes/</link>
+      <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/kubernetes/</guid>
       <description></description>
     </item>
     <item>
-      <title>LFX Mentorship</title>
-      <link>http://localhost:37083/tags/lfx-mentorship/</link>
-      <pubDate>Sun, 03 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:37083/tags/lfx-mentorship/</guid>
+      <title>TIL</title>
+      <link>http://localhost:1313/tags/til/</link>
+      <pubDate>Thu, 15 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/til/</guid>
       <description></description>
     </item>
     <item>
-      <title>K8s</title>
-      <link>http://localhost:37083/tags/k8s/</link>
-      <pubDate>Sat, 23 Jul 2022 18:51:46 +0530</pubDate>
-      <guid>http://localhost:37083/tags/k8s/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>http://localhost:37083/tags/security/</link>
-      <pubDate>Sat, 23 Jul 2022 18:51:46 +0530</pubDate>
-      <guid>http://localhost:37083/tags/security/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>New Journey</title>
-      <link>http://localhost:37083/tags/new-journey/</link>
-      <pubDate>Sun, 17 Jul 2022 15:51:12 +0530</pubDate>
-      <guid>http://localhost:37083/tags/new-journey/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>New Website</title>
-      <link>http://localhost:37083/tags/new-website/</link>
-      <pubDate>Sun, 17 Jul 2022 15:51:12 +0530</pubDate>
-      <guid>http://localhost:37083/tags/new-website/</guid>
+      <title>Concurrency</title>
+      <link>http://localhost:1313/tags/concurrency/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/concurrency/</guid>
       <description></description>
     </item>
   </channel>

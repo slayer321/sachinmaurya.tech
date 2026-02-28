@@ -1,5 +1,5 @@
 baseURL = "https://sachinmaurya.tech"
-title   = "Hi, I'm Sachinmaurya!"
+title   = "Sachin Maurya's Weblog"
 languageCode = "en-us"
 theme = "hello-friend-ng"
 
@@ -55,14 +55,14 @@ disableHugoGeneratorInject = false
 
   # Metadata mostly used in document's head
   # 
-  description = "Sachin's blog and portfolio"
-  keywords = "security, cybersecurity, open source, kubernetes, cloud security, devops, linux, golang, penetration testing, ethical hacking, blog, sachin maurya"
-  images = [""]
+  description = "Backend engineer sharing insights on Go, Kubernetes, cloud security, and open source. Writing about software development, CNCF technologies, and lessons learned in cloud-native engineering."
+  keywords = "security, cybersecurity, open source, kubernetes, cloud security, devops, linux, golang, blog, sachin maurya, backend engineering, cloud native, CNCF, software engineering"
+  images = ["/assets/images/social-preview.jpg"]
   themeColor = "#1b1c1d"
 
   # Home subtitle of the index page.
   title = "Hi, I'm Sachinmaurya!"
-  subtitle = "Security & Open Source"
+  subtitle = ""
   homeSubtitle = "Security and Open-source enthusiast "
 
   # Set a background for the homepage
@@ -196,9 +196,36 @@ disableHugoGeneratorInject = false
     url        = "posts/"
     weight = 2
 
+  [[menu.main]]
+    identifier = "notes"
+    name       = "Notes"
+    url        = "notes/"
+    weight = 3
+
 [imaging]
   anchor = 'Smart'
   bgColor = '#ffffff'
   hint = 'photo'
   quality = 75
   resampleFilter = 'Box'
+
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+
+  [[related.indices]]
+    name = "tags"
+    weight = 100
+
+  [[related.indices]]
+    name = "categories"
+    weight = 80
+
+  [[related.indices]]
+    name = "series"
+    weight = 90
+
+  [[related.indices]]
+    name = "date"
+    weight = 10
